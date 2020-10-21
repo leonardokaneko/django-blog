@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Resultados da busca: {{ query }}
+        </h1>
+        {% for post in object_list %}
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <img class="card-img-top" src="{{ post.cover_image.url }}" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-text">{{ posts.summary }}</p>
+            <a href="/posts/{{ post.pk }}" class="btn btn-primary">Leia mais &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Postado em {{ post.created_at }} por
+            <a href="{% url 'author_find' %}?author={{ post.author.pk }}">{{ post.author }}</a>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+     {% include 'partials/sidebar.html' %}
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+{% endblock %}

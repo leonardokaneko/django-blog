@@ -1,0 +1,12 @@
+{% load static %}
+<!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Busca</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <form action="{% url 'search_results' %}" method="get">
+                <input name="q" type="text" class="form-control" placeholder="Busca...">
+              </form>
+            </div>
+          </div>
+        </div>
