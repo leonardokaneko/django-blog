@@ -1,0 +1,16 @@
+{% load static %}
+ <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        {% include 'partials/search.html' %}
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">{{ post.author }}</h5>
+          <div class="card-body">
+              <img src="{{post.author.profile.pic.url}}"  width="310" height="310" alt="">
+            {{ post.author.profile.bio }}
+          </div>
+        </div>
+
+      </div>

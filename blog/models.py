@@ -15,6 +15,15 @@ class Category(models.Model):
         return self.name
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    pic = models.ImageField(upload_to='profile', blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+
 class Posts(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     title = models.CharField(max_length=255)
